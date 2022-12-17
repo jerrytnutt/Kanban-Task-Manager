@@ -1,17 +1,16 @@
 header {
   display: flex;
   flex-direction: row;
-
+  padding: 5px;
   background-color: rgb(61, 61, 88);
   width: 100vw;
 }
+
 .headerLeft {
   flex-grow: 1;
-  background-color: blue;
 }
 .headerRight {
   flex-grow: 1;
-  background-color: green;
 }
 
 .listFormBackground {

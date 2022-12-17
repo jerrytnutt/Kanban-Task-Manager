@@ -13,17 +13,20 @@ function Header() {
 
   return (
     <header>
-      <ProjectTabs />
-      <div className="headerLeft"></div>
-      <div className="headerRight"></div>
-      <Button
-        variant="primary"
-        onClick={() => {
-          setaddListHidden(false);
-        }}
-      >
-        Primary
-      </Button>
+      <div className="headerLeft">
+        <ProjectTabs />
+      </div>
+      <div className="headerRight">
+        <Button
+          variant="primary"
+          onClick={() => {
+            setaddListHidden(false);
+          }}
+        >
+          Primary
+        </Button>
+      </div>
+
       {addListHidden ? null : (
         <CreateNewListForm setaddListHidden={setaddListHidden} />
       )}

@@ -3,9 +3,18 @@ import { createSlice } from '@reduxjs/toolkit';
 let initialStateValue = {
   currentProject: null,
   projectsObject: {
-    One: { name: 'One', age: 50 },
-    Two: { name: 'Two', age: 50 },
-    Three: { name: 'Three', age: 50 },
+    One: {
+      name: 'One',
+      boards: [{ name: 'To Do' }, { name: 'Doing' }, { name: 'Done' }],
+    },
+    Two: {
+      name: 'Two',
+      boards: [{ name: 'To Do2' }, { name: 'Doing2' }, { name: 'Done2' }],
+    },
+    Three: {
+      name: 'Three',
+      boards: [{ name: 'To Do3' }, { name: 'Doing3' }, { name: 'Done3' }],
+    },
   },
 };
 
@@ -16,7 +25,7 @@ const projectsSlice = createSlice({
     addNewProjectObject: (state, action) => {
       state.value.projectsObject[action.payload] = {
         name: action.payload,
-        age: 50,
+        boards: [{ name: 'To Do4' }, { name: 'Doing4' }, { name: 'Done4' }],
       };
     },
     setCurrentProject: (state, action) => {
