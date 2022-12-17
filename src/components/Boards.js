@@ -1,18 +1,36 @@
 import '../styles/Boards.css';
-import { useDispatch } from 'react-redux';
-import { projectsActions } from '../features/projects';
+//import { useDispatch } from 'react-redux';
+//import { projectsActions } from '../features/projects';
 
 function Boards(props) {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
-  const handleClick = () => {
-    dispatch(projectsActions.addNewProjectObject('Four'));
+  const handleClick = (arg) => {
+    //dispatch(projectsActions.addNewProjectObject('Four'));
     // console.log(projects[key]);
+
+    props.addBoard(arg);
   };
-  console.log(props.element.name);
+
   return (
     <div className="boardsOuter">
-      <button onClick={handleClick}>{props.element.name}</button>
+      <div>
+        {props.element.name}
+        <button
+          onClick={() => {
+            handleClick(props.element.name);
+          }}
+        >
+          delete
+        </button>
+      </div>
+      <button
+        onClick={() => {
+          handleClick({ name: 'New Board' });
+        }}
+      >
+        add new
+      </button>
     </div>
   );
 }

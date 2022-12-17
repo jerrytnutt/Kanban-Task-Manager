@@ -31,6 +31,16 @@ const projectsSlice = createSlice({
     setCurrentProject: (state, action) => {
       state.value.currentProject = action.payload;
     },
+    deleteBoard: (state, action) => {
+      let curr = state.value.currentProject;
+      state.value.projectsObject[curr].boards = action.payload;
+    },
+    addNewBoard: (state, action) => {
+      let curr = state.value.currentProject;
+      state.value.projectsObject[curr].boards.push(action.payload);
+
+      // state.value.projectsObject[currentProject] = action.payload;
+    },
   },
 });
 

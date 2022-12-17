@@ -2,22 +2,39 @@ import '../styles/PrimaryContent.css';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Boards from './Boards';
+import { projectsActions } from '../features/projects';
+import { useDispatch } from 'react-redux';
 //import { db } from '../fireData/firebase-config';
 //import { collection } from 'firebase/firestore';
 
 //import Account from './Account/Account';
 
 function PrimaryContent() {
+  const dispatch = useDispatch();
   const projects = useSelector((state) => state.projects.value);
+
+  let boardsList = null;
+  const addBoard = (name) => {
+    if (name.constructor.name === 'Object') {
+      return dispatch(projectsActions.addNewBoard(name));
+    }
+
+    let filterdList = boardsList.filter(function (el) {
+      return el.name !== name;
+    });
+    // Read!
+    // Redo filter for add also? Better?
+    dispatch(projectsActions.deleteBoard(filterdList));
+  };
   let renderdContent = null;
 
   if (projects.currentProject !== null) {
     const currentProject = projects.projectsObject[projects.currentProject];
-    let boardsList = currentProject.boards;
-    //console.log(boardsList);
+    boardsList = currentProject.boards;
+    let name = currentProject.name;
     renderdContent = boardsList.map((element) => (
       <div key={element.name}>
-        <Boards element={element} />
+        <Boards element={element} name={name} addBoard={addBoard} />
       </div>
     ));
     //console.log(renderdContent);
