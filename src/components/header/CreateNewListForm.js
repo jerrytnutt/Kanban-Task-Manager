@@ -1,19 +1,12 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useDispatch } from 'react-redux';
-import { projectsActions } from '../../features/projects';
 
 function CreateNewListForm(props) {
-  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
-    console.log(formProps);
-    //console.log(event.target[0].value);
-    //const elem = document.getElementById('formName');
-    //console.log(elem.value);
-    dispatch(projectsActions.addNewProjectObject('youtubeProject'));
+    props.addProject(formProps.name);
   };
   return (
     <div>

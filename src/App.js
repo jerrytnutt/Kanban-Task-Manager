@@ -1,15 +1,18 @@
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import PrimaryContent from './components/PrimaryContent';
-import Header from './components/header/Header';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <PrimaryContent />
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className="App">
+        <PrimaryContent />
+      </div>
+    </DndProvider>
   );
 }
 

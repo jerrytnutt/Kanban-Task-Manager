@@ -1,20 +1,35 @@
 import '../../styles/Header.css';
 import { useState } from 'react';
+
 import CreateNewListForm from './CreateNewListForm';
 import Button from 'react-bootstrap/Button';
-import ProjectTabs from './ProjectTabs';
 
-//import Account from './Account/Account';
-
-//import { userDataActions } from '../features/userDataReducer';
-
-function Header() {
+function Header(props) {
   const [addListHidden, setaddListHidden] = useState(true);
 
   return (
     <header>
       <div className="headerLeft">
-        <ProjectTabs />
+        {props.projectsArray.map((el, index) => (
+          <div key={index}>
+            <div
+              data={index}
+              onClick={() => {
+                props.setprojectIndex(index);
+              }}
+            >
+              {el.name}
+            </div>
+            <button
+              data={index}
+              onClick={() => {
+                return props.deleteProject(index);
+              }}
+            >
+              delete
+            </button>
+          </div>
+        ))}
       </div>
       <div className="headerRight">
         <Button
@@ -28,7 +43,10 @@ function Header() {
       </div>
 
       {addListHidden ? null : (
-        <CreateNewListForm setaddListHidden={setaddListHidden} />
+        <CreateNewListForm
+          addProject={props.addProject}
+          setaddListHidden={setaddListHidden}
+        />
       )}
     </header>
   );

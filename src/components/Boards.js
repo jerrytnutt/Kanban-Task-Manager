@@ -1,24 +1,49 @@
 import '../styles/Boards.css';
-//import { useDispatch } from 'react-redux';
-//import { projectsActions } from '../features/projects';
+import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import Tasks from './Tasks';
+
+import { projectsActions } from '../features/projects';
 
 function Boards(props) {
-  //const dispatch = useDispatch();
+  console.log(props.element.name);
+  const dispatch = useDispatch();
+  const [elementSelected, setelementSelected] = useState(false);
+  const tasks = props.element.tasks;
 
-  const handleClick = (arg) => {
-    //dispatch(projectsActions.addNewProjectObject('Four'));
-    // console.log(projects[key]);
-
-    props.addBoard(arg);
+  const addTask = (index) => {
+    // console.log(props.projectIndex, props.index, index);
+    return dispatch(projectsActions.addTask([props.projectIndex, props.index]));
   };
 
+  const deleteTask = (index) => {
+    return dispatch(
+      projectsActions.deleteTask([props.projectIndex, props.index, index])
+    );
+  };
+
+  const handleClick = (event) => {
+    if (!elementSelected) {
+      props.getNums(props.index);
+      return setelementSelected(true);
+    }
+  };
+  useEffect(() => {
+    setelementSelected(false);
+  }, [props.element.name]);
+
   return (
-    <div className="boardsOuter">
+    <div
+      className="boardContainer"
+      style={{
+        backgroundColor: !elementSelected ? 'green' : 'blue',
+      }}
+    >
       <div>
         {props.element.name}
         <button
           onClick={() => {
-            handleClick(props.element.name);
+            props.deleteBoard(props.index);
           }}
         >
           delete
@@ -26,11 +51,14 @@ function Boards(props) {
       </div>
       <button
         onClick={() => {
-          handleClick({ name: 'New Board' });
+          props.addBoard('new');
         }}
       >
         add new
       </button>
+      <button onClick={handleClick}>move</button>
+
+      <Tasks tasks={tasks} addTask={addTask} deleteTask={deleteTask} />
     </div>
   );
 }
