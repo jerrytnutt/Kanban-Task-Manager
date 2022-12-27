@@ -1,8 +1,8 @@
-import '../../styles/form.css';
+import '../styles/form.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function CreateNewListForm(props) {
+function NewBoardForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -35,4 +35,4 @@ function CreateNewListForm(props) {
   );
 }
 
-export default CreateNewListForm;
+export default NewBoardForm;

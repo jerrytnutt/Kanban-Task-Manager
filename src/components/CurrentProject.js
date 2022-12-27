@@ -26,17 +26,13 @@ function CurrentProject(props) {
 
   return (
     <div className="boardsOuter">
-      {props.boardsList.map((element, index) => (
-        <Boards
-          key={index}
-          addBoard={addBoard}
-          deleteBoard={deleteBoard}
-          element={element}
-          index={index}
-          projectIndex={props.projectIndex}
-          getNums={getNums}
-        />
-      ))}
+      <Boards
+        addBoard={addBoard}
+        deleteBoard={deleteBoard}
+        boardsList={props.boardsList}
+        projectIndex={props.projectIndex}
+        getNums={getNums}
+      />
     </div>
   );
 }

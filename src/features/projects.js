@@ -2,39 +2,24 @@ import { createSlice } from '@reduxjs/toolkit';
 
 let initialStateValue = [
   {
-    name: 'One',
+    name: 'Notes',
     boards: [
       {
         name: 'To Do',
-        tasks: [
-          { name: 'Task One' },
-          { name: 'Task Two' },
-          { name: 'Task One' },
-          { name: 'Task Two' },
-        ],
+        tasks: [],
       },
       {
         name: 'Doing',
-        tasks: [
-          { name: 'Task One' },
-          { name: 'Task Two' },
-          { name: 'Task One' },
-          { name: 'Task Two' },
-        ],
+        tasks: [],
       },
       {
         name: 'Done',
-        tasks: [
-          { name: 'Task One' },
-          { name: 'Task Two' },
-          { name: 'Task One' },
-          { name: 'Task Two' },
-        ],
+        tasks: [],
       },
     ],
   },
   {
-    name: 'Two',
+    name: 'Youtube',
     boards: [
       {
         name: 'two',
@@ -50,6 +35,15 @@ let initialStateValue = [
       },
     ],
   },
+  {
+    name: 'Green',
+    boards: [
+      {
+        name: 'two',
+        tasks: [{ name: 'Task2 One' }, { name: 'Task2 Two' }],
+      },
+    ],
+  },
 ];
 
 const projectsSlice = createSlice({
@@ -59,7 +53,12 @@ const projectsSlice = createSlice({
     addProject: (state, action) => {
       state.push({
         name: action.payload,
-        boards: [{ name: 'To Do' }, { name: 'Doing' }, { name: 'Done' }],
+        boards: [
+          {
+            name: 'one',
+            tasks: [{ name: 'Task2 One' }, { name: 'Task2 Two' }],
+          },
+        ],
       });
     },
     deleteProject: (state, action) => {
@@ -87,6 +86,14 @@ const projectsSlice = createSlice({
     deleteTask: (state, action) => {
       const current = state[action.payload[0]].boards[action.payload[1]].tasks;
       current.splice(action.payload[2], 1);
+    },
+    swapTask: (state, action) => {
+      //console.log(action.payload);
+      const current = state[action.payload[0]].boards[action.payload[1]].tasks;
+      let a = current[action.payload[2]];
+      current[action.payload[2]] = current[action.payload[3]];
+      current[action.payload[3]] = a;
+      // current.splice(action.payload[2], 1);
     },
   },
 });

@@ -1,10 +1,32 @@
 .boardContainer {
   color: white;
+  display: flex;
+  flex-direction: column;
 
-  width: 100px;
-  background-color: lime;
-  border-radius: 0;
+  background-color: hsl(251, 56%, 15%);
+  margin: 5px;
+  padding: 5px;
 
   height: 200px;
   width: 20%;
+}
+.innerBoard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.3rem;
+}
+.boardSvg {
+  cursor: pointer;
+  visibility: hidden;
+}
+.boardContainer:hover .boardSvg {
+  visibility: visible;
+}
+.boardContainer div {
+  border: 1px solid red;
+}
+.plusButton {
+  color: blue;
+  cursor: pointer;
 }
