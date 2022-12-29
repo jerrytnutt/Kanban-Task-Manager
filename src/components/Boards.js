@@ -4,8 +4,9 @@ import { BiMoveHorizontal } from 'react-icons/bi';
 import { BsPlusSquare } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import NewBoardForm from './NewBoardForm';
+
 import Tasks from './Tasks';
+import CreateNewListForm from './header/CreateNewListForm';
 
 import { projectsActions } from '../features/projects';
 
@@ -114,7 +115,13 @@ function Boards(props) {
           }}
         />
 
-        {!newBoard ? null : <NewBoardForm />}
+        {!newBoard ? null : (
+          <CreateNewListForm
+            addFunc={props.addBoard}
+            closeBoard={setnewBoard}
+            item={{ name: 'Board' }}
+          />
+        )}
       </div>
     </>
   );

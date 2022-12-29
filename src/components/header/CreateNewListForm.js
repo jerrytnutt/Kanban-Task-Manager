@@ -3,25 +3,26 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 function CreateNewListForm(props) {
+  console.log(props);
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
-    props.addProject(formProps.name);
+    props.addFunc(formProps.name);
   };
   return (
     <div>
-      <div className="listFormBackground">
+      <div className="listFormBackground"></div>
+      <Form className="listForm" onSubmit={handleSubmit}>
         <button
+          className="closeButton"
           onClick={() => {
-            return props.setaddListHidden(true);
+            return props.closeBoard(false);
           }}
         >
           Close
         </button>
-      </div>
-      <Form className="listForm" onSubmit={handleSubmit}>
-        <h3>Add New Project</h3>
+        <h3>Add New {props.item.name}</h3>
         <Form.Label>Name</Form.Label>
         <Form.Group className="mb-3" controlId="formName">
           <Form.Control name="name" type="name" placeholder="Enter name" />

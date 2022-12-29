@@ -36,7 +36,7 @@ h3 {
   margin-right: auto;
 }
 .closeButton {
-  width: 50px;
-  position: relative;
-  top: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }

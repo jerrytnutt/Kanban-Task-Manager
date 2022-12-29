@@ -1,13 +1,13 @@
 import '../../styles/Header.css';
 import { useState } from 'react';
+import { BsPlusSquare } from 'react-icons/bs';
 
 import { BsCircleFill } from 'react-icons/bs';
 import DeleteProjectWindow from './DeleteProjectWindow';
 import CreateNewListForm from './CreateNewListForm';
-import Button from 'react-bootstrap/Button';
 
 function Header(props) {
-  const [addListHidden, setaddListHidden] = useState(true);
+  const [addListHidden, setaddListHidden] = useState(false);
   const [showDeletionForm, setshowDeletionForm] = useState([]);
 
   return (
@@ -33,17 +33,16 @@ function Header(props) {
             </div>
           </div>
         ))}
+
+        <div className="plusSquare">
+          <BsPlusSquare
+            onClick={() => {
+              setaddListHidden(true);
+            }}
+          />
+        </div>
       </div>
-      <div className="headerRight">
-        <Button
-          variant="primary"
-          onClick={() => {
-            setaddListHidden(false);
-          }}
-        >
-          Primary
-        </Button>
-      </div>
+      <div className="headerRight"></div>
       {showDeletionForm.length === 0 ? null : (
         <DeleteProjectWindow
           deleteProject={props.deleteProject}
@@ -52,10 +51,11 @@ function Header(props) {
         />
       )}
 
-      {addListHidden ? null : (
+      {!addListHidden ? null : (
         <CreateNewListForm
-          addProject={props.addProject}
-          setaddListHidden={setaddListHidden}
+          addFunc={props.addProject}
+          closeBoard={setaddListHidden}
+          item={{ name: 'Project' }}
         />
       )}
     </header>

@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 let initialStateValue = {
   userName: false,
   userID: '',
+  userView: [],
 };
 
 const userSlice = createSlice({
@@ -14,6 +15,9 @@ const userSlice = createSlice({
     },
     resetUserData: (state) => {
       state.value = initialStateValue;
+    },
+    setUserView: (state) => {
+      state.value.userView = 'TaskData';
     },
   },
 });

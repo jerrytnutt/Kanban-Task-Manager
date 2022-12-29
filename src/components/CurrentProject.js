@@ -2,10 +2,14 @@ import '../styles/CurrentProject.css';
 
 import { useDispatch } from 'react-redux';
 import { projectsActions } from '../features/projects';
+import { useSelector } from 'react-redux';
 import Boards from './Boards';
+import TaskData from './TaskData';
 
 function CurrentProject(props) {
   const dispatch = useDispatch();
+  const userView = useSelector((state) => state.user.userView);
+  //console.log(userView);
 
   let ar = [];
 
@@ -25,15 +29,21 @@ function CurrentProject(props) {
   };
 
   return (
-    <div className="boardsOuter">
-      <Boards
-        addBoard={addBoard}
-        deleteBoard={deleteBoard}
-        boardsList={props.boardsList}
-        projectIndex={props.projectIndex}
-        getNums={getNums}
-      />
-    </div>
+    <>
+      {userView.length === 0 ? (
+        <div className="boardsOuter">
+          <Boards
+            addBoard={addBoard}
+            deleteBoard={deleteBoard}
+            boardsList={props.boardsList}
+            projectIndex={props.projectIndex}
+            getNums={getNums}
+          />
+        </div>
+      ) : (
+        <TaskData />
+      )}
+    </>
   );
 }
 

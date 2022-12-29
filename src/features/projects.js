@@ -6,7 +6,7 @@ let initialStateValue = [
     boards: [
       {
         name: 'To Do',
-        tasks: [],
+        tasks: [{ name: 'Task2 One' }, { name: 'Task2 Two' }],
       },
       {
         name: 'Doing',
