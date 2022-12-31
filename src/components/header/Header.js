@@ -1,13 +1,13 @@
 import '../../styles/Header.css';
 import { useState } from 'react';
 import { BsPlusSquare } from 'react-icons/bs';
-
 import { BsCircleFill } from 'react-icons/bs';
-import DeleteProjectWindow from './DeleteProjectWindow';
-import CreateNewListForm from './CreateNewListForm';
+
+import DeleteProjectForm from './DeleteProjectForm';
+import SingleInputForm from './SingleInputForm';
 
 function Header(props) {
-  const [addListHidden, setaddListHidden] = useState(false);
+  const [showAdditionForm, setshowAdditionForm] = useState(false);
   const [showDeletionForm, setshowDeletionForm] = useState([]);
 
   return (
@@ -26,8 +26,7 @@ function Header(props) {
             <div>
               <BsCircleFill
                 onClick={() => {
-                  let ar = [index, el.name];
-                  return setshowDeletionForm(ar);
+                  return setshowDeletionForm([index, el.name]);
                 }}
               />
             </div>
@@ -37,27 +36,27 @@ function Header(props) {
         <div className="plusSquare">
           <BsPlusSquare
             onClick={() => {
-              setaddListHidden(true);
+              setshowAdditionForm(true);
             }}
           />
         </div>
       </div>
       <div className="headerRight"></div>
-      {showDeletionForm.length === 0 ? null : (
-        <DeleteProjectWindow
+      {showDeletionForm.length > 0 ? (
+        <DeleteProjectForm
           deleteProject={props.deleteProject}
           setshowDeletionForm={setshowDeletionForm}
           showDeletionForm={showDeletionForm}
         />
-      )}
+      ) : null}
 
-      {!addListHidden ? null : (
-        <CreateNewListForm
+      {showAdditionForm ? (
+        <SingleInputForm
           addFunc={props.addProject}
-          closeBoard={setaddListHidden}
+          closeBoard={setshowAdditionForm}
           item={{ name: 'Project' }}
         />
-      )}
+      ) : null}
     </header>
   );
 }

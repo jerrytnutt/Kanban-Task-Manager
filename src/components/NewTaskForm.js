@@ -7,6 +7,7 @@ function NewTaskForm(props) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
+    return formProps;
     //props.addProject(formProps.name);
   };
   return (

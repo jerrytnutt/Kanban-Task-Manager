@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 
 import Tasks from './Tasks';
-import CreateNewListForm from './header/CreateNewListForm';
+import SingleInputForm from './header/SingleInputForm';
 
 import { projectsActions } from '../features/projects';
 
@@ -116,7 +116,7 @@ function Boards(props) {
         />
 
         {!newBoard ? null : (
-          <CreateNewListForm
+          <SingleInputForm
             addFunc={props.addBoard}
             closeBoard={setnewBoard}
             item={{ name: 'Board' }}

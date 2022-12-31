@@ -2,10 +2,9 @@ import '../../styles/form.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function DeleteProjectWindow(props) {
+function DeleteProjectForm(props) {
   const handleClick = (event) => {
     event.preventDefault();
-
     props.deleteProject(props.showDeletionForm[0]);
     props.setshowDeletionForm([]);
   };
@@ -33,4 +32,4 @@ function DeleteProjectWindow(props) {
   );
 }
 
-export default DeleteProjectWindow;
+export default DeleteProjectForm;

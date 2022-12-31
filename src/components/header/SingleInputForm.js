@@ -2,7 +2,7 @@ import '../../styles/form.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function CreateNewListForm(props) {
+function SingleInputForm(props) {
   console.log(props);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,4 +36,4 @@ function CreateNewListForm(props) {
   );
 }
 
-export default CreateNewListForm;
+export default SingleInputForm;
