@@ -1,31 +1,30 @@
 import '../styles/CurrentProject.css';
 
 import { useDispatch } from 'react-redux';
-import { projectsActions } from '../features/projects';
 import { useSelector } from 'react-redux';
+import { projectsActions } from '../features/projects';
 import Boards from './Boards';
 import TaskData from './TaskData';
 
 function CurrentProject(props) {
   const dispatch = useDispatch();
   const userView = useSelector((state) => state.user.userView);
-  //console.log(userView);
 
-  let ar = [];
-
-  const addBoard = (name) => {
-    return dispatch(projectsActions.addBoard([props.projectIndex, name]));
+  const addBoard = (arg) => {
+    return dispatch(projectsActions.addBoard([props.projectIndex, arg]));
   };
   const deleteBoard = (arg) => {
     return dispatch(projectsActions.deleteBoard([props.projectIndex, arg]));
   };
-  const getNums = (num) => {
-    if (ar.length === 1) {
-      ar.push(num);
-
-      return dispatch(projectsActions.swapBoards([props.projectIndex, ar]));
+  let boardindexArray = [];
+  const getBoardIndexes = (num) => {
+    if (boardindexArray.length === 1) {
+      boardindexArray.push(num);
+      return dispatch(
+        projectsActions.swapBoards([props.projectIndex, boardindexArray])
+      );
     }
-    ar.push(num);
+    boardindexArray.push(num);
   };
 
   return (
@@ -37,7 +36,7 @@ function CurrentProject(props) {
             deleteBoard={deleteBoard}
             boardsList={props.boardsList}
             projectIndex={props.projectIndex}
-            getNums={getNums}
+            getBoardIndexes={getBoardIndexes}
           />
         </div>
       ) : (

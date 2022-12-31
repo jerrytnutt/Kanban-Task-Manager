@@ -11,13 +11,13 @@ const userSlice = createSlice({
   initialState: initialStateValue,
   reducers: {
     setUserData: (state, action) => {
-      state.value = action.payload;
+      state = action.payload;
     },
     resetUserData: (state) => {
-      state.value = initialStateValue;
+      state = initialStateValue;
     },
     setUserView: (state) => {
-      state.value.userView = 'TaskData';
+      state.userView = 'TaskData';
     },
   },
 });

@@ -50,9 +50,9 @@ function Boards(props) {
     if (elementSelected === -1) {
       //console.log()
       setelementSelected(index);
-      return props.getNums(index);
+      return props.getBoardIndexes(index);
     }
-    props.getNums(index);
+    props.getBoardIndexes(index);
     return setelementSelected(-1);
     //console.log(parseInt(event.target.parentNode.id));
     // let elms = document.getElementById(index);
