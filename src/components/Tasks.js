@@ -9,9 +9,7 @@ import { useState } from 'react';
 function Tasks(props) {
   const dispatch = useDispatch();
   const [viewTaskform, setviewTaskForm] = useState(false);
-  const handleClick = () => {
-    dispatch(userActions.setUserView('Task'));
-  };
+
   return (
     <div className="taskContainer">
       {props.tasks.map((element, index) => (
@@ -25,10 +23,34 @@ function Tasks(props) {
             />
             <BiMoveHorizontal
               onClick={() => {
-                return props.swapTasks(props.boardsIndex, index);
+                if (props.boardsIndex !== 0) {
+                  return props.swapTasks(
+                    props.boardsIndex,
+
+                    index,
+                    props.boardsIndex - 1
+                  );
+                }
               }}
             />
-            <button onClick={handleClick}>td</button>
+            <BiMoveHorizontal
+              onClick={() => {
+                if (props.boardsIndex + 1 !== props.boardsListLength)
+                  return props.swapTasks(
+                    props.boardsIndex,
+
+                    index,
+                    props.boardsIndex + 1
+                  );
+              }}
+            />
+            <button
+              onClick={() => {
+                dispatch(userActions.setUserView([props.boardsIndex, index]));
+              }}
+            >
+              td
+            </button>
           </div>
         </div>
       ))}
@@ -40,7 +62,13 @@ function Tasks(props) {
       >
         Add
       </button>
-      {viewTaskform ? <NewTaskForm /> : null}
+      {viewTaskform ? (
+        <NewTaskForm
+          addTask={props.addTask}
+          boardsIndex={props.boardsIndex}
+          setviewTaskForm={setviewTaskForm}
+        />
+      ) : null}
     </div>
   );
 }

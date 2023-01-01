@@ -9,15 +9,17 @@ function NewTaskForm(props) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
-    console.log(formProps);
-    //return formProps;
-    //props.addProject(formProps.name);
+    formProps.subTasks = subtasksArray;
+
+    props.addTask(props.boardsIndex, formProps);
+    return props.setviewTaskForm(false);
   };
   const submitSubtask = () => {
     let el = document.getElementById('subtask');
     let newArray = [...subtasksArray];
     newArray.push(el.value);
     setsubTasksArray(newArray);
+
     console.log(subtasksArray);
   };
   return (

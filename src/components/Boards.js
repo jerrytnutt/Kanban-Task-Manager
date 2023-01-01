@@ -14,8 +14,8 @@ function Boards(props) {
   const dispatch = useDispatch();
   const [newBoard, setnewBoard] = useState(false);
   const [elementSelected, setelementSelected] = useState(-1);
+  const boardsListLength = props.boardsList.length;
 
-  let ar = [];
   // const tasks = props.element.tasks;
 
   //!
@@ -24,25 +24,40 @@ function Boards(props) {
   //!!
   //!!
 
-  const addTask = (a) => {
-    console.log(a);
-    return dispatch(projectsActions.addTask([props.projectIndex, a]));
+  const addTask = (a, b) => {
+    return dispatch(projectsActions.addTask([props.projectIndex, a, b]));
   };
 
   const deleteTask = (a, b) => {
     return dispatch(projectsActions.deleteTask([props.projectIndex, a, b]));
   };
 
-  const swapTasks = (a, b) => {
-    if (ar.length === 2) {
-      ar.push(b);
+  const swapTasks = (board, index, switchBoard) => {
+    // console.log(a, b);
 
-      return dispatch(
-        projectsActions.swapTask([props.projectIndex, ar[0], ar[1], ar[2]])
-      );
-    }
-    ar.push(a);
-    ar.push(b);
+    //console.log('pass');
+    //if (a === 'left' && b !== 0) {
+    //   console.log('can pass left');
+    dispatch(
+      projectsActions.swapTask([props.projectIndex, board, index, switchBoard])
+    );
+    // }
+    // if (a === 'right' && b !== props.boardsList.length - 1) {
+    //  console.log('can pass right');
+    //  dispatch(projectsActions.swapTask([props.projectIndex, b, c, b + 1]));
+    //}
+    ///
+    //
+    ///
+    //  console.log(props.boardsList.length);
+    //if (ar.length === 2) {
+    // ar.push(b);
+    // return dispatch(
+    //   projectsActions.swapTask([props.projectIndex, ar[0], ar[1], ar[2]])
+    // );
+    // }
+    // ar.push(a);
+    //ar.push(b);
   };
 
   const handleClick = (index) => {
@@ -98,6 +113,7 @@ function Boards(props) {
             </div>
           </div>
           <Tasks
+            boardsListLength={boardsListLength}
             tasks={element.tasks}
             boardsIndex={index}
             addTask={addTask}

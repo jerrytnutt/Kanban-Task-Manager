@@ -40,7 +40,7 @@ function CurrentProject(props) {
           />
         </div>
       ) : (
-        <TaskData />
+        <TaskData projectIndex={props.projectIndex} userView={userView} />
       )}
     </>
   );

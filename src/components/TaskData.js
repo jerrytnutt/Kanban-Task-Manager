@@ -1,5 +1,14 @@
 import '../styles/taskdata.css';
-function TaskData() {
+import { useSelector } from 'react-redux';
+function TaskData(props) {
+  const projects = useSelector((state) => state.projects);
+  const task =
+    projects[props.projectIndex].boards[props.userView[0]].tasks[
+      props.userView[1]
+    ];
+
+  //const task = props.boardsList[props.userView[0]].tasks[props.userView[1]];
+  console.log(task);
   return (
     <div className="tdOuter">
       <div className="h">h</div>

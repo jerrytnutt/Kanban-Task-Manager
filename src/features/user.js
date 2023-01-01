@@ -16,8 +16,8 @@ const userSlice = createSlice({
     resetUserData: (state) => {
       state = initialStateValue;
     },
-    setUserView: (state) => {
-      state.userView = 'TaskData';
+    setUserView: (state, action) => {
+      state.userView = action.payload;
     },
   },
 });
