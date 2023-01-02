@@ -23,9 +23,7 @@
 .boardContainer:hover .boardSvg {
   visibility: visible;
 }
-.boardContainer div {
-  border: 1px solid red;
-}
+
 .plusButton {
   color: blue;
   cursor: pointer;

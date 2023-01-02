@@ -24,59 +24,31 @@ function Boards(props) {
   //!!
   //!!
 
-  const addTask = (a, b) => {
-    return dispatch(projectsActions.addTask([props.projectIndex, a, b]));
+  const addTask = (boardIndex, taskObj) => {
+    return dispatch(
+      projectsActions.addTask([props.projectIndex, boardIndex, taskObj])
+    );
   };
 
-  const deleteTask = (a, b) => {
-    return dispatch(projectsActions.deleteTask([props.projectIndex, a, b]));
+  const deleteTask = (boardIndex, taskIndex) => {
+    return dispatch(
+      projectsActions.deleteTask([props.projectIndex, boardIndex, taskIndex])
+    );
   };
 
   const swapTasks = (board, index, switchBoard) => {
-    // console.log(a, b);
-
-    //console.log('pass');
-    //if (a === 'left' && b !== 0) {
-    //   console.log('can pass left');
     dispatch(
       projectsActions.swapTask([props.projectIndex, board, index, switchBoard])
     );
-    // }
-    // if (a === 'right' && b !== props.boardsList.length - 1) {
-    //  console.log('can pass right');
-    //  dispatch(projectsActions.swapTask([props.projectIndex, b, c, b + 1]));
-    //}
-    ///
-    //
-    ///
-    //  console.log(props.boardsList.length);
-    //if (ar.length === 2) {
-    // ar.push(b);
-    // return dispatch(
-    //   projectsActions.swapTask([props.projectIndex, ar[0], ar[1], ar[2]])
-    // );
-    // }
-    // ar.push(a);
-    //ar.push(b);
   };
 
   const handleClick = (index) => {
-    //console.log(index);
     if (elementSelected === -1) {
-      //console.log()
       setelementSelected(index);
-      return props.getBoardIndexes(index);
+      return props.swapBoards(index);
     }
-    props.getBoardIndexes(index);
+    props.swapBoards(index);
     return setelementSelected(-1);
-    //console.log(parseInt(event.target.parentNode.id));
-    // let elms = document.getElementById(index);
-    //console.log(elms);
-    //// let data = elms.getAttribute('data');
-    //event.target.backgroundColor = 'green';
-    //  if (elementSelected) {
-    //  return setelementSelected(false);
-    //}
   };
 
   useEffect(() => {
@@ -113,12 +85,12 @@ function Boards(props) {
             </div>
           </div>
           <Tasks
-            boardsListLength={boardsListLength}
-            tasks={element.tasks}
-            boardsIndex={index}
             addTask={addTask}
             deleteTask={deleteTask}
             swapTasks={swapTasks}
+            boardsListLength={boardsListLength}
+            tasks={element.tasks}
+            boardsIndex={index}
           />
         </div>
       ))}
@@ -126,7 +98,6 @@ function Boards(props) {
         <BsPlusSquare
           className="plusButton"
           onClick={() => {
-            // props.addBoard('new');
             setnewBoard(true);
           }}
         />

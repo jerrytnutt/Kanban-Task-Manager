@@ -8,12 +8,38 @@ function TaskData(props) {
     ];
 
   //const task = props.boardsList[props.userView[0]].tasks[props.userView[1]];
-  console.log(task);
+  let subTasksArray = task.subTasks;
+  console.log(subTasksArray);
+  const handleChange = (index) => {
+    console.log(index);
+  };
+
   return (
     <div className="tdOuter">
       <div className="h">h</div>
       <div className="tdContents">
-        <div className="left">L</div>
+        <div className="left">
+          {subTasksArray.map((el, index) => {
+            return (
+              <div key={index} className="input-group">
+                <span className="input-group-text" id="basic-addon2">
+                  {el.name}
+                </span>
+                <div className="input-group-text">
+                  <input
+                    className="form-check-input mt-0"
+                    onChange={() => {
+                      return handleChange(index);
+                    }}
+                    type="checkbox"
+                    value=""
+                    aria-label="Checkbox for following text input"
+                  ></input>
+                </div>
+              </div>
+            );
+          })}
+        </div>
         <div className="right">R</div>
       </div>
     </div>

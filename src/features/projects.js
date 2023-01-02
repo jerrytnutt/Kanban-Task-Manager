@@ -7,7 +7,11 @@ let initialStateValue = [
       {
         name: 'To Do',
         tasks: [
-          { name: 'Task2 One', description: '', subTasks: [] },
+          {
+            name: 'Task2 One',
+            description: '',
+            subTasks: [{ name: 'one' }, { name: 'two' }],
+          },
           { name: 'Task2 Two', description: '', subTasks: [] },
         ],
       },
@@ -52,7 +56,7 @@ const projectsSlice = createSlice({
     },
     addBoard: (state, action) => {
       const current = state[action.payload[0]].boards;
-      current.push({ name: action.payload[1], tasks: [{ name: 'new' }] });
+      current.push({ name: action.payload[1], tasks: [] });
     },
     deleteBoard: (state, action) => {
       console.log(action.payload);

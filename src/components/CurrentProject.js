@@ -10,21 +10,22 @@ function CurrentProject(props) {
   const dispatch = useDispatch();
   const userView = useSelector((state) => state.user.userView);
 
-  const addBoard = (arg) => {
-    return dispatch(projectsActions.addBoard([props.projectIndex, arg]));
+  const addBoard = (name) => {
+    return dispatch(projectsActions.addBoard([props.projectIndex, name]));
   };
-  const deleteBoard = (arg) => {
-    return dispatch(projectsActions.deleteBoard([props.projectIndex, arg]));
+  const deleteBoard = (index) => {
+    return dispatch(projectsActions.deleteBoard([props.projectIndex, index]));
   };
-  let boardindexArray = [];
-  const getBoardIndexes = (num) => {
-    if (boardindexArray.length === 1) {
-      boardindexArray.push(num);
+
+  const swapArray = [];
+  const swapBoards = (num) => {
+    if (swapArray.length === 1) {
+      swapArray.push(num);
       return dispatch(
-        projectsActions.swapBoards([props.projectIndex, boardindexArray])
+        projectsActions.swapBoards([props.projectIndex, swapArray])
       );
     }
-    boardindexArray.push(num);
+    swapArray.push(num);
   };
 
   return (
@@ -34,9 +35,9 @@ function CurrentProject(props) {
           <Boards
             addBoard={addBoard}
             deleteBoard={deleteBoard}
+            swapBoards={swapBoards}
             boardsList={props.boardsList}
             projectIndex={props.projectIndex}
-            getBoardIndexes={getBoardIndexes}
           />
         </div>
       ) : (

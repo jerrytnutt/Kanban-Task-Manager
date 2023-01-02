@@ -10,7 +10,6 @@ function NewTaskForm(props) {
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
     formProps.subTasks = subtasksArray;
-
     props.addTask(props.boardsIndex, formProps);
     return props.setviewTaskForm(false);
   };
@@ -19,8 +18,6 @@ function NewTaskForm(props) {
     let newArray = [...subtasksArray];
     newArray.push(el.value);
     setsubTasksArray(newArray);
-
-    console.log(subtasksArray);
   };
   return (
     <div>
