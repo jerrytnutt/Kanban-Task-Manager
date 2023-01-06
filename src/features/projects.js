@@ -45,8 +45,8 @@ const projectsSlice = createSlice({
         name: action.payload,
         boards: [
           {
-            name: 'one',
-            tasks: [{ name: 'Task2 One' }, { name: 'Task2 Two' }],
+            name: 'To Do',
+            tasks: [{ name: 'Task One', description: '', subTasks: [] }],
           },
         ],
       });

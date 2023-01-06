@@ -84,7 +84,7 @@ function SignInInput(props) {
         <button
           className="closeButton"
           onClick={() => {
-            props.setshowSignInInput(false);
+            props.setshowsignUpForm(false);
           }}
         >
           X

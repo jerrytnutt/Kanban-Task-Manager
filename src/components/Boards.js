@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 
 import Tasks from './Tasks';
 import SingleInputForm from './header/SingleInputForm';
-
 import { projectsActions } from '../features/projects';
 
 function Boards(props) {
@@ -15,14 +14,6 @@ function Boards(props) {
   const [newBoard, setnewBoard] = useState(false);
   const [elementSelected, setelementSelected] = useState(-1);
   const boardsListLength = props.boardsList.length;
-
-  // const tasks = props.element.tasks;
-
-  //!
-  // Adding new items can be done at a higher level
-  //!!
-  //!!
-  //!!
 
   const addTask = (boardIndex, taskObj) => {
     return dispatch(
@@ -61,8 +52,8 @@ function Boards(props) {
         <div
           key={index}
           style={{
-            backgroundColor:
-              elementSelected === index ? 'yellow' : 'hsl(251, 56%, 15%)',
+            transform:
+              elementSelected === index ? 'rotate(10deg)' : 'rotate(0deg)',
           }}
           className="boardContainer"
         >

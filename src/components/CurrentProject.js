@@ -31,7 +31,7 @@ function CurrentProject(props) {
   return (
     <>
       {userView.length === 0 ? (
-        <div className="boardsOuter">
+        <div className="outerBoard">
           <Boards
             addBoard={addBoard}
             deleteBoard={deleteBoard}

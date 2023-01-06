@@ -18,7 +18,7 @@ function DeleteProjectForm(props) {
             return props.setshowDeletionForm([]);
           }}
         >
-          Close
+          X
         </button>
         <Form.Group className="mb-3" controlId="formName">
           <Form.Label>Delete Project {props.showDeletionForm[1]}?</Form.Label>

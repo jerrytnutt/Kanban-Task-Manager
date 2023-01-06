@@ -20,7 +20,7 @@ function SingleInputForm(props) {
             return props.closeBoard(false);
           }}
         >
-          Close
+          X
         </button>
         <h3>Add New {props.item.name}</h3>
         <Form.Label>Name</Form.Label>

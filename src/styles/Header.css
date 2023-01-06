@@ -3,33 +3,33 @@ header {
   flex-direction: row;
   padding-left: 5px;
   padding-top: 5px;
-  background-color: hsl(251, 56%, 15%);
   margin-bottom: 5px;
+  background-color: hsl(251, 56%, 15%);
 }
 .headerLeft {
   flex-grow: 1;
   display: flex;
   flex-direction: row;
 }
-.project {
+.projectTab {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  background-color: hsl(251, 47%, 24%);
-  color: white;
-  border: 1px solid black;
   border-radius: 5px;
-  cursor: pointer;
   padding-left: 10px;
   padding-right: 5px;
   font-weight: 400;
   font-size: 1.3rem;
+  cursor: pointer;
+  background-color: hsl(251, 47%, 24%);
+  color: white;
+  border: 1px solid black;
 }
-.project svg {
-  color: rgb(138, 33, 33);
+.projectTab svg {
   margin-left: 10px;
+  color: rgb(138, 33, 33);
 }
-.project svg:hover {
+.projectTab svg:hover {
   color: rgb(206, 34, 34);
 }
 .headerRight {
@@ -39,8 +39,9 @@ header {
   display: flex;
 }
 .plusSquare svg {
-  color: blue;
   height: 30px;
   width: 30px;
   align-self: flex-end;
+  color: blue;
+  cursor: pointer;
 }

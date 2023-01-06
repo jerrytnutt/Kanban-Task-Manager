@@ -15,12 +15,11 @@ function PrimaryContent() {
 
   const boardsList = projectsArray[projectIndex].boards;
 
-  const addProject = (arg) => {
-    dispatch(projectsActions.addProject(arg));
+  const addProject = (name) => {
+    dispatch(projectsActions.addProject(name));
   };
 
   const deleteProject = (data) => {
-    console.log(data, projectIndex);
     if (data < projectIndex || projectIndex === projectsArray.length - 1) {
       const newIndex = projectIndex - 1;
       setprojectIndex(newIndex);

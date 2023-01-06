@@ -2,6 +2,7 @@ import '../../styles/Header.css';
 import { useState } from 'react';
 import { BsPlusSquare } from 'react-icons/bs';
 import { BsCircleFill } from 'react-icons/bs';
+import Button from 'react-bootstrap/Button';
 import SignInInput from './SignUpForm';
 import DeleteProjectForm from './DeleteProjectForm';
 import SingleInputForm from './SingleInputForm';
@@ -9,14 +10,16 @@ import SingleInputForm from './SingleInputForm';
 function Header(props) {
   const [showAdditionForm, setshowAdditionForm] = useState(false);
   const [showDeletionForm, setshowDeletionForm] = useState([]);
-  //const [showsignUpForm, setshowsignUpForm] = useState(true);
+  const [showsignUpForm, setshowsignUpForm] = useState(false);
 
   return (
     <header>
-      {true ? <SignInInput /> : null}
+      {showsignUpForm ? (
+        <SignInInput setshowsignUpForm={setshowsignUpForm} />
+      ) : null}
       <div className="headerLeft">
         {props.projectsArray.map((el, index) => (
-          <div className="project" key={index}>
+          <div className="projectTab" key={index}>
             <div
               className="projectName"
               onClick={() => {
@@ -44,7 +47,14 @@ function Header(props) {
         </div>
       </div>
       <div className="headerRight">
-        <button>Sign Up</button>
+        <Button
+          onClick={() => {
+            setshowsignUpForm(true);
+          }}
+          variant="primary"
+        >
+          Sign Up
+        </Button>
       </div>
       {showDeletionForm.length > 0 ? (
         <DeleteProjectForm
