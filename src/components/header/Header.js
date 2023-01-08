@@ -1,17 +1,36 @@
 import '../../styles/Header.css';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { BsPlusSquare } from 'react-icons/bs';
 import { BsCircleFill } from 'react-icons/bs';
 import Button from 'react-bootstrap/Button';
+import { useDispatch } from 'react-redux';
 import SignInInput from './SignUpForm';
 import DeleteProjectForm from './DeleteProjectForm';
 import SingleInputForm from './SingleInputForm';
+import { userActions } from '../../features/user';
+import { auth } from '../../fireData/firebase-config';
+import { signOut } from 'firebase/auth';
 
 function Header(props) {
+  const dispatch = useDispatch();
   const [showAdditionForm, setshowAdditionForm] = useState(false);
   const [showDeletionForm, setshowDeletionForm] = useState([]);
   const [showsignUpForm, setshowsignUpForm] = useState(false);
 
+  const userName = useSelector((state) => state.user.value.userName);
+
+  const signOutUser = () => {
+    // Redux state is cleared when user signs out.
+    signOut(auth)
+      .then(() => {
+        // dispatch(invoiceList.resetData());
+        dispatch(userActions.resetUserData());
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   return (
     <header>
       {showsignUpForm ? (
@@ -23,6 +42,7 @@ function Header(props) {
             <div
               className="projectName"
               onClick={() => {
+                dispatch(userActions.resetUserView());
                 props.setprojectIndex(index);
               }}
             >
@@ -47,14 +67,25 @@ function Header(props) {
         </div>
       </div>
       <div className="headerRight">
-        <Button
-          onClick={() => {
-            setshowsignUpForm(true);
-          }}
-          variant="primary"
-        >
-          Sign Up
-        </Button>
+        {userName ? (
+          <Button
+            onClick={() => {
+              signOutUser();
+            }}
+            variant="primary"
+          >
+            Log Out
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              setshowsignUpForm(true);
+            }}
+            variant="primary"
+          >
+            Sign Up
+          </Button>
+        )}
       </div>
       {showDeletionForm.length > 0 ? (
         <DeleteProjectForm

@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   height: 100vh;
   width: 100%;
   background-color: hsl(251, 56%, 15%);
@@ -12,10 +11,9 @@
   flex-direction: row;
   width: 50%;
   height: 50%;
-
   border: 1px solid blue;
 }
-.h {
+.header {
   background-color: blueviolet;
   width: 50%;
 }

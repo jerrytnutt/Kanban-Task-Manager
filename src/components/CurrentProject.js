@@ -8,7 +8,7 @@ import TaskData from './TaskData';
 
 function CurrentProject(props) {
   const dispatch = useDispatch();
-  const userView = useSelector((state) => state.user.userView);
+  const userView = useSelector((state) => state.user.value.userView);
 
   const addBoard = (name) => {
     return dispatch(projectsActions.addBoard([props.projectIndex, name]));

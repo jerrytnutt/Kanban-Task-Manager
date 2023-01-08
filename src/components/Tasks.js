@@ -2,7 +2,7 @@ import '../styles/Tasks.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import NewTaskForm from './NewTaskForm';
-
+import { BsPlusSquare } from 'react-icons/bs';
 import { AiFillDelete } from 'react-icons/ai';
 import { BiMoveHorizontal } from 'react-icons/bi';
 import { userActions } from '../features/user';
@@ -58,14 +58,14 @@ function Tasks(props) {
             </div>
           </div>
         ))}
-        <button
+        <BsPlusSquare
           onClick={() => {
             setviewTaskForm(true);
             // props.addTask(props.boardsIndex);
           }}
         >
           Add
-        </button>
+        </BsPlusSquare>
       </div>
       {viewTaskform ? (
         <NewTaskForm

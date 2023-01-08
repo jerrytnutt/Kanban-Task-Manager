@@ -4,20 +4,24 @@ let initialStateValue = {
   userName: false,
   userID: '',
   userView: [],
+  userImg: '',
 };
 
 const userSlice = createSlice({
   name: 'userData',
-  initialState: initialStateValue,
+  initialState: { value: initialStateValue },
   reducers: {
     setUserData: (state, action) => {
-      state = action.payload;
+      state.value = action.payload;
     },
     resetUserData: (state) => {
-      state = initialStateValue;
+      state.value = initialStateValue;
     },
     setUserView: (state, action) => {
       state.userView = action.payload;
+    },
+    resetUserView: (state, action) => {
+      state.userView = [];
     },
   },
 });

@@ -10,17 +10,20 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
+import { useSelector } from 'react-redux';
 
 function SignInInput(props) {
+  const user = useSelector((state) => state.user);
+  console.log(user);
   const [errorMessage, seterrorMessage] = useState(null);
   const [returningUser, setreturningUser] = useState(true);
   const dispatch = useDispatch();
 
   const createNewAccount = (username, email, password) => {
+    console.log(username);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setDoc(doc(db, 'users', userCredential.user.uid), {
-          // Invoices: [],
           userData: {
             userName: username,
             userID: userCredential.user.uid,
@@ -37,7 +40,7 @@ function SignInInput(props) {
             userImg: '',
           })
         );
-        // props.setshowSignInInput(false);
+        props.setshowSignInInput(false);
       })
       .catch((error) => {
         // error
@@ -68,7 +71,15 @@ function SignInInput(props) {
     return createNewAccount(username, email, password);
   };
   const runDemoMode = () => {
-    console.log(6);
+    dispatch(
+      userActions.setUserData({
+        userName: 'k',
+        userID: 8,
+        userView: [],
+        userImg: '',
+      })
+    );
+    console.log(user);
   };
 
   return (

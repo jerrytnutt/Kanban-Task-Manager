@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 
 function NewTaskForm(props) {
   const [subtasksArray, setsubTasksArray] = useState([]);
+  console.log(subtasksArray);
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -16,21 +17,22 @@ function NewTaskForm(props) {
   const submitSubtask = () => {
     let el = document.getElementById('subtask');
     let newArray = [...subtasksArray];
-    newArray.push(el.value);
+    newArray.push({ name: el.value, complete: false });
     setsubTasksArray(newArray);
   };
   return (
     <>
-      <div className="backG"></div>
+      <div className="taskFormBackground"></div>
       <div className="taskForm">
         <Form onSubmit={handleSubmit}>
           <h3>Add New Task</h3>
           <button
+            className="closeButton"
             onClick={() => {
-              return props.setaddListHidden(true);
+              return props.setviewTaskForm(false);
             }}
           >
-            Close
+            X
           </button>
           <Form.Label>Name</Form.Label>
           <Form.Group className="mb-3" controlId="formName">
@@ -47,10 +49,10 @@ function NewTaskForm(props) {
           </Form.Group>
           <h3>Subtasks</h3>
           <ul className="list-group">
-            {subtasksArray.map((el, index) => {
+            {Object.keys(subtasksArray).map(function (key, i) {
               return (
-                <li key={index} className="list-group-item">
-                  {el[0]}
+                <li className="list-group-item" key={i}>
+                  {subtasksArray[key].name}
                 </li>
               );
             })}

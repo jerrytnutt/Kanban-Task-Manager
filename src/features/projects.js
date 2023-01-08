@@ -10,7 +10,11 @@ let initialStateValue = [
           {
             name: 'Task2 One',
             description: '',
-            subTasks: [{ name: 'one' }, { name: 'two' }],
+            subTasks: [
+              { name: 'one', complete: false },
+              { name: 'two', complete: false },
+              { name: 'three', complete: false },
+            ],
           },
           { name: 'Task2 Two', description: '', subTasks: [] },
         ],
@@ -87,6 +91,13 @@ const projectsSlice = createSlice({
       //current[action.payload[2]] = current[action.payload[3]];
       //current[action.payload[3]] = a;
       current.splice(action.payload[2], 1);
+    },
+    completeTask: (state, action) => {
+      const current =
+        state[action.payload[0]].boards[action.payload[1]].tasks[
+          action.payload[2]
+        ];
+      current.subTasks[action.payload[3]].complete = action.payload[4];
     },
   },
 });
