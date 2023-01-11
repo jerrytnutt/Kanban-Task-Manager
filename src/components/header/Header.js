@@ -14,8 +14,8 @@ import { signOut } from 'firebase/auth';
 
 function Header(props) {
   const dispatch = useDispatch();
-  const [showAdditionForm, setshowAdditionForm] = useState(false);
   const [showDeletionForm, setshowDeletionForm] = useState([]);
+  const [showAdditionForm, setshowAdditionForm] = useState(false);
   const [showsignUpForm, setshowsignUpForm] = useState(false);
 
   const userName = useSelector((state) => state.user.value.userName);
@@ -24,7 +24,6 @@ function Header(props) {
     // Redux state is cleared when user signs out.
     signOut(auth)
       .then(() => {
-        // dispatch(invoiceList.resetData());
         dispatch(userActions.resetUserData());
       })
       .catch((error) => {

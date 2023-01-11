@@ -3,12 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 function SingleInputForm(props) {
-  console.log(props);
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
     props.addFunc(formProps.name);
+    props.closeBoard(false);
   };
   return (
     <div>

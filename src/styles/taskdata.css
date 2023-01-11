@@ -1,4 +1,4 @@
-.tdOuter {
+.taskDataOuter {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,20 +9,34 @@
 .tdContents {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   width: 50%;
   height: 50%;
   border: 1px solid blue;
 }
-.header {
+.taskDataHeader {
+  display: flex;
+  flex-direction: row;
   background-color: blueviolet;
+
+  padding: 5px;
   width: 50%;
+}
+.taskDataHeader p {
+  margin: 0;
+}
+.arrowButton {
+  font-size: 1.5rem;
+  color: black;
 }
 
 .left {
+  padding: 5px;
   flex-grow: 1;
-  background-color: green;
+  background-color: hsl(251, 31%, 40%);
 }
 .right {
+  padding: 5px;
   flex-grow: 1;
-  background-color: red;
+  background-color: hsl(252, 37%, 27%);
 }

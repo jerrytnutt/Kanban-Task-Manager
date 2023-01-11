@@ -1,17 +1,20 @@
 import '../styles/taskdata.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { projectsActions } from '../features/projects';
+import { BsFillArrowLeftSquareFill } from 'react-icons/bs';
+
+import { userActions } from '../features/user';
 
 function TaskData(props) {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const userName = useSelector((state) => state.user.value.userName);
 
   const projects = useSelector((state) => state.projects);
+  console.log(props.projectIndex, props.userView);
   const task =
     projects[props.projectIndex].boards[props.userView[0]].tasks[
       props.userView[1]
     ];
-  console.log(task.subTasks);
 
   //const task = props.boardsList[props.userView[0]].tasks[props.userView[1]];
   let subTasksArray = [];
@@ -29,7 +32,14 @@ function TaskData(props) {
     e.preventDefault();
 
     let index = task.subTasks.findIndex((i) => i.name === e.target.value);
-    let userName = user.userName;
+    // let userName = user.userName;
+    console.log(
+      props.projectIndex,
+      props.userView[0],
+      props.userView[1],
+      index,
+      userName
+    );
 
     dispatch(
       projectsActions.completeTask([
@@ -43,10 +53,19 @@ function TaskData(props) {
   };
 
   return (
-    <div className="tdOuter">
-      <div className="header">{task.name}</div>
+    <div className="taskDataOuter">
+      <div className="taskDataHeader">
+        <BsFillArrowLeftSquareFill
+          onClick={() => {
+            dispatch(userActions.resetUserView());
+          }}
+          className="arrowButton "
+        ></BsFillArrowLeftSquareFill>
+        <p>{task.name}</p>
+      </div>
       <div className="tdContents">
         <div className="left">
+          <h2>SubTasks</h2>
           {subTasksArray.map((el, index) => {
             return (
               <div key={index} className="input-group">
@@ -69,13 +88,11 @@ function TaskData(props) {
         </div>
         <div className="right">
           {completedArray.map((el, index) => {
+            console.log(el);
             return (
               <div key={index} className="input-group">
                 <span className="input-group-text" id="basic-addon2">
-                  {el.name}
-                </span>
-                <span className="input-group-text" id="basic-addon2">
-                  {el.complete}
+                  {el.name} completed by {el.complete}
                 </span>
               </div>
             );

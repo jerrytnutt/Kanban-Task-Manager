@@ -8,6 +8,7 @@ import TaskData from './TaskData';
 
 function CurrentProject(props) {
   const dispatch = useDispatch();
+  // userView determines if the user is viewing the current project or a Task itself.
   const userView = useSelector((state) => state.user.value.userView);
 
   const addBoard = (name) => {

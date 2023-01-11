@@ -13,6 +13,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { useSelector } from 'react-redux';
 
 function SignInInput(props) {
+  console.log(props);
   const user = useSelector((state) => state.user);
   console.log(user);
   const [errorMessage, seterrorMessage] = useState(null);
@@ -40,7 +41,7 @@ function SignInInput(props) {
             userImg: '',
           })
         );
-        props.setshowSignInInput(false);
+        props.setshowsignUpForm(false);
       })
       .catch((error) => {
         // error
@@ -56,7 +57,7 @@ function SignInInput(props) {
     if (returningUser) {
       return signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          props.setshowSignInInput(false);
+          props.setshowsignUpForm(false);
           // ...
         })
         .catch((error) => {

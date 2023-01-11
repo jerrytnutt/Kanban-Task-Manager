@@ -11,7 +11,13 @@
 .taskSvg {
   cursor: pointer;
   visibility: hidden;
+  font-size: 1.2rem;
 }
 .taskContainer:hover .taskSvg {
   visibility: visible;
+}
+
+.addTask {
+  font-size: 1.2rem;
+  cursor: pointer;
 }

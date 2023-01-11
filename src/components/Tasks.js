@@ -2,9 +2,16 @@ import '../styles/Tasks.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import NewTaskForm from './NewTaskForm';
-import { BsPlusSquare } from 'react-icons/bs';
+
+import {
+  BsArrowLeft,
+  BsArrowRight,
+  BsPlusSquare,
+  BsFillDoorOpenFill,
+} from 'react-icons/bs';
+
 import { AiFillDelete } from 'react-icons/ai';
-import { BiMoveHorizontal } from 'react-icons/bi';
+
 import { userActions } from '../features/user';
 
 function Tasks(props) {
@@ -24,7 +31,7 @@ function Tasks(props) {
                 }}
               />
               {props.boardsIndex !== 0 ? (
-                <BiMoveHorizontal
+                <BsArrowLeft
                   onClick={() => {
                     return props.swapTasks(
                       props.boardsIndex,
@@ -36,7 +43,7 @@ function Tasks(props) {
                 />
               ) : null}
               {props.boardsIndex + 1 !== props.boardsListLength ? (
-                <BiMoveHorizontal
+                <BsArrowRight
                   onClick={() => {
                     return props.swapTasks(
                       props.boardsIndex,
@@ -47,21 +54,18 @@ function Tasks(props) {
                   }}
                 />
               ) : null}
-
-              <button
+              <BsFillDoorOpenFill
                 onClick={() => {
                   dispatch(userActions.setUserView([props.boardsIndex, index]));
                 }}
-              >
-                td
-              </button>
+              />
             </div>
           </div>
         ))}
         <BsPlusSquare
+          className="addTask"
           onClick={() => {
             setviewTaskForm(true);
-            // props.addTask(props.boardsIndex);
           }}
         >
           Add

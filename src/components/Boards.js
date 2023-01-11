@@ -1,9 +1,10 @@
 import '../styles/Boards.css';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { AiFillDelete } from 'react-icons/ai';
 import { BiMoveHorizontal } from 'react-icons/bi';
 import { BsPlusSquare } from 'react-icons/bs';
-import { useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
 
 import Tasks from './Tasks';
 import SingleInputForm from './header/SingleInputForm';
@@ -12,7 +13,8 @@ import { projectsActions } from '../features/projects';
 function Boards(props) {
   const dispatch = useDispatch();
   const [newBoard, setnewBoard] = useState(false);
-  const [elementSelected, setelementSelected] = useState(-1);
+  const [boardToBeSwaped, setboardToBeSwaped] = useState(-1);
+
   const boardsListLength = props.boardsList.length;
 
   const addTask = (boardIndex, taskObj) => {
@@ -34,16 +36,16 @@ function Boards(props) {
   };
 
   const handleClick = (index) => {
-    if (elementSelected === -1) {
-      setelementSelected(index);
+    if (boardToBeSwaped === -1) {
+      setboardToBeSwaped(index);
       return props.swapBoards(index);
     }
     props.swapBoards(index);
-    return setelementSelected(-1);
+    return setboardToBeSwaped(-1);
   };
 
   useEffect(() => {
-    setelementSelected(-1);
+    setboardToBeSwaped(-1);
   }, [props.projectIndex]);
 
   return (
@@ -53,7 +55,7 @@ function Boards(props) {
           key={index}
           style={{
             transform:
-              elementSelected === index ? 'rotate(10deg)' : 'rotate(0deg)',
+              boardToBeSwaped === index ? 'rotate(8deg)' : 'rotate(0deg)',
           }}
           className="boardContainer"
         >

@@ -18,10 +18,10 @@ const userSlice = createSlice({
       state.value = initialStateValue;
     },
     setUserView: (state, action) => {
-      state.userView = action.payload;
+      state.value.userView = action.payload;
     },
     resetUserView: (state, action) => {
-      state.userView = [];
+      state.value.userView = [];
     },
   },
 });
