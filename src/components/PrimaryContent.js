@@ -46,6 +46,15 @@ function PrimaryContent() {
             // dispatch(invoiceList.setinvoiceData(docSnap.data().Invoices));
 
             dispatch(userActions.setUserData(docSnap.data().userData));
+            var ref = doc(db, 'projects', 'projectCollection');
+
+            const snap = await getDoc(ref);
+            if (snap.exists()) {
+              for (var i = 0; i < snap.data().array.length; i++) {
+                dispatch(projectsActions.getServerData(snap.data().array[i]));
+                //Do something
+              }
+            }
           }
         };
 

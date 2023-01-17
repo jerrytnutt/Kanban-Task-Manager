@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-let initialStateValue = [
-  {
+/*
+{
     name: 'Notes',
     boards: [
       {
@@ -29,12 +28,14 @@ let initialStateValue = [
       },
     ],
   },
+  */
+let initialStateValue = [
   {
-    name: 'Youtube',
+    name: 'Project',
     boards: [
       {
-        name: 'two',
-        tasks: [{ name: 'h', description: '', subTasks: [] }],
+        name: 'Board',
+        tasks: [{ name: 'Task', description: '', subTasks: [] }],
       },
     ],
   },
@@ -44,13 +45,17 @@ const projectsSlice = createSlice({
   name: 'projects',
   initialState: initialStateValue,
   reducers: {
+    getServerData: (state, action) => {
+      state.splice(0, 1);
+      state.push(action.payload);
+    },
     addProject: (state, action) => {
       state.push({
         name: action.payload,
         boards: [
           {
             name: 'To Do',
-            tasks: [{ name: 'Task One', description: '', subTasks: [] }],
+            tasks: [],
           },
         ],
       });

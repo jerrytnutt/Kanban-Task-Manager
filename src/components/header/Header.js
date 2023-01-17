@@ -16,7 +16,7 @@ function Header(props) {
   const dispatch = useDispatch();
   const [showDeletionForm, setshowDeletionForm] = useState([]);
   const [showAdditionForm, setshowAdditionForm] = useState(false);
-  const [showsignUpForm, setshowsignUpForm] = useState(false);
+  const [showsignUpForm, setshowsignUpForm] = useState(true);
 
   const userName = useSelector((state) => state.user.value.userName);
 

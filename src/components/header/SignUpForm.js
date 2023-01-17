@@ -13,9 +13,8 @@ import { doc, setDoc } from 'firebase/firestore';
 import { useSelector } from 'react-redux';
 
 function SignInInput(props) {
-  console.log(props);
   const user = useSelector((state) => state.user);
-  console.log(user);
+
   const [errorMessage, seterrorMessage] = useState(null);
   const [returningUser, setreturningUser] = useState(true);
   const dispatch = useDispatch();

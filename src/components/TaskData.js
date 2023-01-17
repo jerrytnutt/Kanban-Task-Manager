@@ -10,13 +10,12 @@ function TaskData(props) {
   const userName = useSelector((state) => state.user.value.userName);
 
   const projects = useSelector((state) => state.projects);
-  console.log(props.projectIndex, props.userView);
+
   const task =
     projects[props.projectIndex].boards[props.userView[0]].tasks[
       props.userView[1]
     ];
 
-  //const task = props.boardsList[props.userView[0]].tasks[props.userView[1]];
   let subTasksArray = [];
   let completedArray = [];
   task.subTasks.map((el) => {
