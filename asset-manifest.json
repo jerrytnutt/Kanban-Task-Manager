@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Kanban-Task-Manager/static/css/main.80b68b6e.css",
+    "main.js": "/Kanban-Task-Manager/static/js/main.70015c25.js",
+    "index.html": "/Kanban-Task-Manager/index.html",
+    "main.80b68b6e.css.map": "/Kanban-Task-Manager/static/css/main.80b68b6e.css.map",
+    "main.70015c25.js.map": "/Kanban-Task-Manager/static/js/main.70015c25.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.80b68b6e.css",
+    "static/js/main.70015c25.js"
+  ]
+}
