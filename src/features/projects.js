@@ -31,11 +31,20 @@ import { createSlice } from '@reduxjs/toolkit';
   */
 let initialStateValue = [
   {
-    name: 'Project',
+    name: 'Example Project',
     boards: [
       {
-        name: 'Board',
-        tasks: [{ name: 'Task', description: '', subTasks: [] }],
+        name: 'Board One',
+        tasks: [
+          {
+            name: 'Task One',
+            description: '',
+            subTasks: [
+              { name: 'SubTask One', complete: false },
+              { name: 'SubTask Two', complete: false },
+            ],
+          },
+        ],
       },
     ],
   },
@@ -46,7 +55,11 @@ const projectsSlice = createSlice({
   initialState: initialStateValue,
   reducers: {
     getServerData: (state, action) => {
-      state.splice(0, 1);
+      console.log(action.payload[0], action.payload[1]);
+      state.splice(action.payload[1], 1, action.payload[0]);
+    },
+    pushPro: (state, action) => {
+      //state.splice(0, 1);
       state.push(action.payload);
     },
     addProject: (state, action) => {

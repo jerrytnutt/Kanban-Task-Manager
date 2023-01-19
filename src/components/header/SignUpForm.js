@@ -10,17 +10,16 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import { useSelector } from 'react-redux';
+//import { useSelector } from 'react-redux';
 
 function SignInInput(props) {
-  const user = useSelector((state) => state.user);
+  //const user = useSelector((state) => state.user);
 
   const [errorMessage, seterrorMessage] = useState(null);
   const [returningUser, setreturningUser] = useState(true);
   const dispatch = useDispatch();
 
   const createNewAccount = (username, email, password) => {
-    console.log(username);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setDoc(doc(db, 'users', userCredential.user.uid), {
@@ -71,15 +70,17 @@ function SignInInput(props) {
     return createNewAccount(username, email, password);
   };
   const runDemoMode = () => {
-    dispatch(
-      userActions.setUserData({
-        userName: 'k',
-        userID: 8,
-        userView: [],
-        userImg: '',
+    return signInWithEmailAndPassword(
+      auth,
+      'demoaccount@website.com',
+      'demopassword161'
+    )
+      .then((userCredential) => {
+        props.setshowsignUpForm(false);
       })
-    );
-    console.log(user);
+      .catch((error) => {
+        seterrorMessage(error.message);
+      });
   };
 
   return (

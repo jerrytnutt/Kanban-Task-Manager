@@ -32,7 +32,7 @@ function Header(props) {
   };
   return (
     <header>
-      {showsignUpForm ? (
+      {showsignUpForm && userName === false ? (
         <SignInInput setshowsignUpForm={setshowsignUpForm} />
       ) : null}
       <div className="headerLeft">
@@ -50,6 +50,9 @@ function Header(props) {
             <div>
               <BsCircleFill
                 onClick={() => {
+                  if (props.projectsArray.length === 1) {
+                    return null;
+                  }
                   return setshowDeletionForm([index, el.name]);
                 }}
               />
