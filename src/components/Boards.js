@@ -55,7 +55,7 @@ function Boards(props) {
           key={index}
           style={{
             transform:
-              boardToBeSwaped === index ? 'rotate(8deg)' : 'rotate(0deg)',
+              boardToBeSwaped === index ? 'rotate(5deg)' : 'rotate(0deg)',
           }}
           className="boardContainer"
         >

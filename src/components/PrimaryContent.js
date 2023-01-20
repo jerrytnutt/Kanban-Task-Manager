@@ -51,7 +51,6 @@ function PrimaryContent() {
 
             const snap = await getDoc(ref);
             if (snap.exists()) {
-              console.log(snap.data().array.length);
               for (var i = 0; i < snap.data().array.length; i++) {
                 dispatch(
                   projectsActions.getServerData([snap.data().array[i], i])

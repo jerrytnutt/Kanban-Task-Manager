@@ -24,7 +24,7 @@
 }
 
 .plusButton {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  color: black;
+  color: rgb(255, 255, 255);
 }

@@ -12,12 +12,11 @@
   flex-wrap: wrap;
   width: 50%;
   height: 50%;
-  border: 1px solid blue;
 }
 .taskDataHeader {
   display: flex;
   flex-direction: row;
-  background-color: hsl(251, 46%, 51%);
+  background-color: hsl(251, 63%, 61%);
 
   padding: 5px;
   width: 50%;
@@ -36,7 +35,7 @@
 .left {
   padding: 5px;
   flex-grow: 1;
-  background-color: hsl(251, 40%, 40%);
+  background-color: hsl(251, 63%, 61%);
 }
 .right {
   padding: 5px;
@@ -46,4 +45,8 @@
 
 input {
   cursor: pointer;
+}
+
+.complete {
+  color: white;
 }

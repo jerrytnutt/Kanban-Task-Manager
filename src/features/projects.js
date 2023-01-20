@@ -55,7 +55,6 @@ const projectsSlice = createSlice({
   initialState: initialStateValue,
   reducers: {
     getServerData: (state, action) => {
-      console.log(action.payload[0], action.payload[1]);
       state.splice(action.payload[1], 1, action.payload[0]);
     },
     pushPro: (state, action) => {

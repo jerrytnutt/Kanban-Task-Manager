@@ -86,8 +86,8 @@ function TaskData(props) {
           })}
         </div>
         <div className="right">
+          <h4 className="complete">Complete</h4>
           {completedArray.map((el, index) => {
-            console.log(el);
             return (
               <div key={index} className="input-group">
                 <span className="input-group-text" id="basic-addon2">
