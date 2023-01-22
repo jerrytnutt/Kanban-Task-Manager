@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 
 function NewTaskForm(props) {
   const [subtasksArray, setsubTasksArray] = useState([]);
-  console.log(subtasksArray);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -59,7 +59,6 @@ function NewTaskForm(props) {
           </ul>
           <div className="input-group mb-3">
             <input
-              //  onSubmit={submitSubtask}
               type="text"
               id="subtask"
               className="form-control"

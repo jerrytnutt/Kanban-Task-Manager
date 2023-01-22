@@ -10,43 +10,43 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
   width: 50%;
   height: 50%;
 }
 .taskDataHeader {
   display: flex;
   flex-direction: row;
-  background-color: hsl(251, 63%, 61%);
-
+  border-radius: 5px;
+  background-color: hsl(251, 44%, 44%);
+  font-size: 1.4rem;
   padding: 5px;
   width: 50%;
 }
 .taskDataHeader p {
-  color: black;
+  color: white;
   margin: 0;
 }
 .arrowButton {
+  position: relative;
+  top: 5px;
   margin-right: 10px;
   font-size: 1.5rem;
   cursor: pointer;
   color: white;
 }
 
-.left {
+.left,
+.right {
   padding: 5px;
   flex-grow: 1;
-  background-color: hsl(251, 63%, 61%);
+  border-radius: 5px;
+  color: white;
+  font-size: 1.3rem;
+  background-color: hsl(251, 36%, 55%);
 }
 .right {
   padding: 5px;
   flex-grow: 1;
-  background-color: hsl(252, 37%, 27%);
-}
-
-input {
-  cursor: pointer;
-}
-
-.complete {
-  color: white;
+  background-color: hsl(251, 36%, 55%);
 }

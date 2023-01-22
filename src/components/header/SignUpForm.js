@@ -1,4 +1,3 @@
-import '../../styles/signUpForm.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
@@ -10,11 +9,8 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-//import { useSelector } from 'react-redux';
 
 function SignInInput(props) {
-  //const user = useSelector((state) => state.user);
-
   const [errorMessage, seterrorMessage] = useState(null);
   const [returningUser, setreturningUser] = useState(true);
   const dispatch = useDispatch();

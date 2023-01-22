@@ -3,13 +3,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import NewTaskForm from './NewTaskForm';
 
-import {
-  BsArrowLeft,
-  BsArrowRight,
-  BsPlusSquare,
-  BsFillDoorOpenFill,
-} from 'react-icons/bs';
-
+import { BsPlusSquare, BsFillDoorOpenFill } from 'react-icons/bs';
+import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 import { AiFillDelete } from 'react-icons/ai';
 
 import { userActions } from '../features/user';
@@ -31,7 +26,7 @@ function Tasks(props) {
                 }}
               />
               {props.boardsIndex !== 0 ? (
-                <BsArrowLeft
+                <AiFillCaretLeft
                   onClick={() => {
                     return props.swapTasks(
                       props.boardsIndex,
@@ -43,7 +38,7 @@ function Tasks(props) {
                 />
               ) : null}
               {props.boardsIndex + 1 !== props.boardsListLength ? (
-                <BsArrowRight
+                <AiFillCaretRight
                   onClick={() => {
                     return props.swapTasks(
                       props.boardsIndex,

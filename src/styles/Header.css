@@ -4,7 +4,7 @@ header {
   padding-left: 5px;
   padding-top: 5px;
   margin-bottom: 5px;
-  background-color: hsl(251, 56%, 15%);
+  background-color: hsl(251, 52%, 19%);
 }
 .headerLeft {
   flex-grow: 1;

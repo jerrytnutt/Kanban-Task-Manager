@@ -11,7 +11,7 @@ import TaskData from './TaskData';
 function CurrentProject(props) {
   const dispatch = useDispatch();
   const projectsArray = useSelector((state) => state.projects);
-  // userView determines if the user is viewing the current project or a Task itself.
+  // userView determines if the user is viewing the Boards of a project or a Single Task Page
   const userView = useSelector((state) => state.user.value.userView);
   const username = useSelector((state) => state.user.value.userName);
 
@@ -22,17 +22,14 @@ function CurrentProject(props) {
     return dispatch(projectsActions.deleteBoard([props.projectIndex, index]));
   };
 
-  const swapArray = [];
-  const swapBoards = (num) => {
-    if (swapArray.length === 1) {
-      swapArray.push(num);
-      return dispatch(
-        projectsActions.swapBoards([props.projectIndex, swapArray])
-      );
-    }
-    swapArray.push(num);
+  const swapBoards = (arr) => {
+    return dispatch(projectsActions.swapBoards([props.projectIndex, arr]));
   };
+  /*
+  Once the user signs in the projects will be requested from firebase
+  and any changes will cause an update.
 
+  */
   useEffect(() => {
     async function fetchData() {
       if (username !== false && projectsArray[0].name !== 'Example Project') {

@@ -1,5 +1,3 @@
-import '../styles/PrimaryContent.css';
-
 import Header from './header/Header';
 import CurrentProject from './CurrentProject';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -21,7 +19,6 @@ function PrimaryContent() {
 
   const addProject = (name) => {
     dispatch(projectsActions.addProject(name));
-    // updateFireBase();
   };
 
   const deleteProject = (data) => {
@@ -44,9 +41,9 @@ function PrimaryContent() {
           if (docSnap.exists()) {
             // If the user account already exist get the data from the firestore and
             // add to state.
-            // dispatch(invoiceList.setinvoiceData(docSnap.data().Invoices));
 
             dispatch(userActions.setUserData(docSnap.data().userData));
+            // Also get the data from the projects
             var ref = doc(db, 'projects', 'projectCollection');
 
             const snap = await getDoc(ref);
@@ -55,7 +52,6 @@ function PrimaryContent() {
                 dispatch(
                   projectsActions.getServerData([snap.data().array[i], i])
                 );
-                //Do something
               }
             }
           }

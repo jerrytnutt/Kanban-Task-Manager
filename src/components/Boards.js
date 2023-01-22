@@ -1,9 +1,9 @@
 import '../styles/Boards.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 import { AiFillDelete } from 'react-icons/ai';
-import { BiMoveHorizontal } from 'react-icons/bi';
 import { BsPlusSquare } from 'react-icons/bs';
 
 import Tasks from './Tasks';
@@ -13,7 +13,6 @@ import { projectsActions } from '../features/projects';
 function Boards(props) {
   const dispatch = useDispatch();
   const [newBoard, setnewBoard] = useState(false);
-  const [boardToBeSwaped, setboardToBeSwaped] = useState(-1);
 
   const boardsListLength = props.boardsList.length;
 
@@ -35,30 +34,10 @@ function Boards(props) {
     );
   };
 
-  const handleClick = (index) => {
-    if (boardToBeSwaped === -1) {
-      setboardToBeSwaped(index);
-      return props.swapBoards(index);
-    }
-    props.swapBoards(index);
-    return setboardToBeSwaped(-1);
-  };
-
-  useEffect(() => {
-    setboardToBeSwaped(-1);
-  }, [props.projectIndex]);
-
   return (
     <>
       {props.boardsList.map((element, index) => (
-        <div
-          key={index}
-          style={{
-            transform:
-              boardToBeSwaped === index ? 'rotate(5deg)' : 'rotate(0deg)',
-          }}
-          className="boardContainer"
-        >
+        <div key={index} className="boardContainer">
           <div className="innerBoard">
             <div> {element.name}</div>
             <div>
@@ -68,13 +47,23 @@ function Boards(props) {
                   props.deleteBoard(index);
                 }}
               />
+              {index > 0 ? (
+                <AiFillCaretLeft
+                  className="boardSvg"
+                  onClick={() => {
+                    props.swapBoards([index, index - 1]);
+                  }}
+                />
+              ) : null}
 
-              <BiMoveHorizontal
-                className="boardSvg"
-                onClick={() => {
-                  handleClick(index);
-                }}
-              />
+              {index + 1 < props.boardsList.length ? (
+                <AiFillCaretRight
+                  className="boardSvg"
+                  onClick={() => {
+                    props.swapBoards([index, index + 1]);
+                  }}
+                />
+              ) : null}
             </div>
           </div>
           <Tasks

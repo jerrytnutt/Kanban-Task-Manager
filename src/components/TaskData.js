@@ -31,14 +31,6 @@ function TaskData(props) {
     e.preventDefault();
 
     let index = task.subTasks.findIndex((i) => i.name === e.target.value);
-    // let userName = user.userName;
-    console.log(
-      props.projectIndex,
-      props.userView[0],
-      props.userView[1],
-      index,
-      userName
-    );
 
     dispatch(
       projectsActions.completeTask([
