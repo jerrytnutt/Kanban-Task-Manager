@@ -72,7 +72,7 @@ function NewTaskForm(props) {
                 type="button"
                 onClick={submitSubtask}
               >
-                Button
+                Add
               </button>
             </div>
           </div>
