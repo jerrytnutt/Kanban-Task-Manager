@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Kanban-Task-Manager/static/css/main.bf8aa8d2.css",
-    "main.js": "/Kanban-Task-Manager/static/js/main.ce1e5610.js",
+    "main.css": "/Kanban-Task-Manager/static/css/main.3facf18b.css",
+    "main.js": "/Kanban-Task-Manager/static/js/main.d9f1b771.js",
     "index.html": "/Kanban-Task-Manager/index.html",
-    "main.bf8aa8d2.css.map": "/Kanban-Task-Manager/static/css/main.bf8aa8d2.css.map",
-    "main.ce1e5610.js.map": "/Kanban-Task-Manager/static/js/main.ce1e5610.js.map"
+    "main.3facf18b.css.map": "/Kanban-Task-Manager/static/css/main.3facf18b.css.map",
+    "main.d9f1b771.js.map": "/Kanban-Task-Manager/static/js/main.d9f1b771.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf8aa8d2.css",
-    "static/js/main.ce1e5610.js"
+    "static/css/main.3facf18b.css",
+    "static/js/main.d9f1b771.js"
   ]
 }
